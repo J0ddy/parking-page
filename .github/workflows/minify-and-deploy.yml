@@ -16,10 +16,10 @@ jobs:
         npm install cssnano-cli -g
 
     - name: Minify HTML 🗜️
-      run: html-minifier --input-dir ./src --output-dir ./dist --file-ext html
+      run: html-minifier --input-dir ./src --output-dir ./src --file-ext html
 
     - name: Minify CSS 🗜️
-      run: cssnano ./src/styles.css ./dist/styles.min.css
+      run: cssnano ./src/css/style.css ./src/css/style.css
 
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@4.1.5
