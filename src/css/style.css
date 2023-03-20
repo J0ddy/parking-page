@@ -1,0 +1,246 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
+
+html {
+  font-family: "Open Sans", sans-serif;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+nav {
+  margin: 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;ß
+  align-items: center;
+  background-color: #fff;
+  padding: 0.6rem 1vw;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 9px;
+}
+
+nav .logo {
+  margin-right: auto;
+}
+
+nav .logo img {
+  height: 50px;
+}
+
+nav .menu p {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+  color: #1e1e1e;
+}
+
+nav .cta {
+  margin-left: auto;
+}
+
+nav .button {
+  display: inline-block;
+  padding: 6px 18px;
+  border-radius: 32px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+  transition: 200ms;
+  border: 2px solid transparent;
+  border-width: 4px;
+}
+
+nav .button.blue {
+  background-color: #007bff;
+}
+
+nav .button.blue:hover {
+  background-color: #007bff;
+  transition: 200ms;
+  border-color: #cee5ff49;
+}
+
+.button:hover {
+  background-color: #2985e8;
+  transition: 200ms;
+  transform: scale(1.05);
+}
+
+@media (min-width: 868px) {
+  nav {
+    padding: 20px 8rem 20px 8rem;
+    margin: 1rem 3rem;
+  }
+  nav > .menu > p {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 868px) {
+  nav .button {
+    font-size: 14px;
+  }
+}
+
+main {
+  background: url("/src/img/bg-image-min.jpeg") no-repeat center center;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+main > #info {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 30vh;
+  width: 80vw;
+  background-color: #fff;
+  border-radius: 9px;
+  padding: 1rem;
+}
+
+section {
+  display: flex;
+  flex-direction: row;
+  margin: 0.5rem;
+  background-color: #fff;
+}
+
+section h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1e1e1e;
+  margin: 0.5rem 0;
+}
+
+section h3 {
+  font-size: 1.3rem;
+  font-weight: normal;
+  color: #1e1e1e;
+  margin-top: 0.5rem;
+}
+
+section p {
+  font-size: 1.1rem;
+  font-weight: normal;
+  color: #1e1e1e;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 868px) {
+  section {
+    flex-direction: column;
+  }
+}
+
+div#about,
+div#contact {
+  display: flex;
+  flex-direction: column;
+}
+
+div#about-inner,
+div#contact-inner {
+  min-width: 60%;
+  width: 50vw;
+}
+
+div#logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div#logo img {
+  height: 24px;
+  filter: opacity(0.75);
+  transition: 300ms;
+  cursor: pointer;
+  -webkit-user-drag: none;
+  border-radius: 50%;
+  padding: 8px;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+div#logo img:hover {
+  filter: opacity(0.9);
+  transition: 300ms;
+  transform: scale(1.05);
+  box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.15);
+}
+
+#contact-email {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#contact-email > a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+  font-size: 1.2rem;
+  transition: 300ms;
+  padding: 0.8rem;
+  margin: 0.5rem;
+  background-color: #fefefe;
+  width: fit-content;
+  border-radius: 32px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#contact-email > a:hover {
+  background-color: #007bff;
+  color: #fff;
+  transition: 300ms;
+  transform: scale(1.05);
+  box-shadow: 1px 2px 24px rgba(0, 0, 0, 0.15);
+}
+
+section#sponsored-links span {
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.6rem;
+  color: #6e6e6e;
+  margin: 0;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+footer {
+  background-color: #fff;
+  padding: 1rem;
+  width: calc(85vw - 1rem);
+  display: flex;
+  position: absolute;
+  bottom: 20px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 1rem;
+  border-radius: 24px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  /* TODO: Display on bottom most */
+}
+
+footer > small {
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.45rem;
+  color: #6e6e6e;
+  margin: 0;
+  text-align: center;
+}
