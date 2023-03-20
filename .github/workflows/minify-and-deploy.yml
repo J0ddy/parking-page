@@ -1,0 +1,28 @@
+name: Build and Deploy
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout 🛎️
+      uses: actions/checkout@v2.3.1
+
+    - name: Install and Build 🔧
+      run: |
+        npm install html-minifier -g
+        npm install cssnano-cli -g
+
+    - name: Minify HTML 🗜️
+      run: html-minifier --input-dir ./src --output-dir ./dist --file-ext html
+
+    - name: Minify CSS 🗜️
+      run: cssnano ./src/styles.css ./dist/styles.min.css
+
+    - name: Deploy 🚀
+      uses: JamesIves/github-pages-deploy-action@4.1.5
+      with:
+        branch: website # The branch the action should deploy to.
+        folder: dist # The folder the action should deploy.
