@@ -3,14 +3,12 @@ on:
   push:
     branches:
       - main
-permissions:
-  contents: write
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout 🛎️
-      uses: actions/checkout@v3.4.0
+      uses: actions/checkout@v2.4.2
 
     - name: Install and Build 🔧
       run: |
@@ -21,10 +19,10 @@ jobs:
       run: html-minifier --input-dir ./src --output-dir ./src --file-ext html
 
     - name: Minify CSS 🗜️
-      run: cssnano ./src/css/style.css ./src/css/style.css
+      run: cssnano ./src/css/style.css -o ./src/css/style.css
 
     - name: Deploy 🚀
-      uses: JamesIves/github-pages-deploy-action@v4.4.1
+      uses: JamesIves/github-pages-deploy-action@v4.5.0
       with:
-        branch: website # The branch the action should deploy to.
-        folder: / # The folder the action should deploy.
+        branch: gh-pages # The branch the action should deploy to.
+        folder: ./src # The folder the action should deploy.
