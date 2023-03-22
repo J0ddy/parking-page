@@ -29,5 +29,6 @@ jobs:
       with:
         branch: gh-pages # The branch the action should deploy to.
         folder: ./src # The folder the action should deploy.
+        token: ${{ secrets.PAT }}
       env:
         ACCESS_TOKEN: ${{ secrets.PAT }}
