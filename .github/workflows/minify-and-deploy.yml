@@ -25,7 +25,7 @@ jobs:
 
     - name: Minify HTML and CSS 🗜️
       run: |
-        npx html-minifier-terser --input-dir src --output-dir dist --file-ext html --collapse-whitespace --remove-comments --minify-css --config-file .htmlminifierrc
+        npx html-minifier-terser --input-dir src/css --output-dir dist --file-ext html --file-ext css --config-file .htmlminifierrc
         npx csso-cli src/*.css --output dist/
 
     - name: Deploy to website branch 🚀
