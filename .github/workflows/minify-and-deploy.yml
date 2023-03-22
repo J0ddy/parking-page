@@ -5,9 +5,10 @@ on:
       - main
 permissions:
   id-token: write
-  contents: read
+  contents: write
 jobs:
   build-and-deploy:
+    concurrency: ci-${{ github.ref }}
     runs-on: ubuntu-latest
     steps:
     - name: Checkout 🛎️
@@ -30,5 +31,3 @@ jobs:
         branch: gh-pages # The branch the action should deploy to.
         folder: ./src # The folder the action should deploy.
         token: ${{ secrets.PAT }}
-      env:
-        ACCESS_TOKEN: ${{ secrets.PAT }}
