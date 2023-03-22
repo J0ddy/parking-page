@@ -1,32 +1,38 @@
-name: Build and Deploy
+name: Build and Deploy Website
+
 on:
   push:
     branches:
-      - main
-permissions:
-  id-token: write
-  contents: write
+      - main # or any other branch where you want to trigger the action
+
 jobs:
   build-and-deploy:
-    concurrency: ci-${{ github.ref }}
     runs-on: ubuntu-latest
+
     steps:
-    - name: Checkout 🛎️
-      uses: actions/checkout@v3.4.0
+    - name: Checkout code 🛎️
+      uses: actions/checkout@v2
 
-    - name: Install and Build 🔧
-      run: |
-        npm install html-minifier -g
-        npm install cssnano-cli -g
-
-    - name: Minify HTML 🗜️
-      run: html-minifier --input-dir ./src --output-dir ./src --file-ext html
-
-    - name: Minify CSS 🗜️
-      run: cssnano ./src/css/style.css -o ./src/css/style.css
-
-    - name: Deploy 🚀
-      uses: JamesIves/github-pages-deploy-action@v4.4.1
+    - name: Setup Node.js 🛠️
+      uses: actions/setup-node@v2
       with:
-        folder: build # The folder the action should deploy.
-        # token: ${{ secrets.PAT }}
+        node-version: '14.x'
+
+    - name: Install dependencies 🔧
+      run: npm ci
+
+    - name: Validate HTML and CSS ✅
+      run: |
+        npx htmlhint "**/*.html"
+        npx stylelint "**/*.css"
+
+    - name: Minify HTML and CSS 🗜️
+      run: |
+        npx html-minifier-terser --input-dir src --output-dir dist --file-ext html --collapse-whitespace --remove-comments --minify-css true
+        npx csso-cli src/*.css dist/*.css --output dist/
+
+    - name: Deploy to website branch 🚀
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
