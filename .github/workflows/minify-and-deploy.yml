@@ -26,7 +26,7 @@ jobs:
     - name: Minify HTML and CSS 🗜️
       run: |
         npx html-minifier-terser --input-dir src --output-dir dist --file-ext html --collapse-whitespace --remove-comments --minify-css true
-        npx csso-cli src/*.css dist/*.css --output dist/
+        npx csso-cli src/*.css --output dist/
 
     - name: Deploy to website branch 🚀
       uses: peaceiris/actions-gh-pages@v3
