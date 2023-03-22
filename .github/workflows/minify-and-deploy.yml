@@ -18,9 +18,6 @@ jobs:
       with:
         node-version: '14.x'
 
-    - name: Install dependencies 🔧
-      run: npm ci
-
     - name: Validate HTML and CSS ✅
       run: |
         npx htmlhint "**/*.html"
